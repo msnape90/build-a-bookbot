@@ -10,19 +10,33 @@ def get_num_words(text_from_book):
     num_words = len(words_from_book)
     return f"Found {num_words} total words"
 
-def get_character_count(text_from_book):
-
+def get_char_count(text_from_book):
     words_from_book = text_from_book.split()
-    characters_in_book = {}
+    chars_in_book = {}
     for word in words_from_book:
-        for character in word:
-            lower_character = character.lower()
-            if lower_character in characters_in_book:
-                # print(f"{lower_character} value increase")
-                characters_in_book[lower_character] = characters_in_book[lower_character] + 1
+        for char in word:
+            lower_char = char.lower()
+            if lower_char in chars_in_book:
+                # print(f"{lower_char} value increase")
+                chars_in_book[lower_char] = chars_in_book[lower_char] + 1
             else:
-                # print(f"{lower_character} added")
-                characters_in_book[lower_character] = 1
-    # print(characters_in_book) 
-    return(characters_in_book)
+                # print(f"{lower_char} added")
+                chars_in_book[lower_char] = 1
+    # print(chars_in_book) 
+    return(chars_in_book)
+
+def sort_char_count(char_count):
+    filtered_chars = []
+    sorted_char_count = sorted(char_count.items(), key=lambda item: item[1], reverse=True)
+    for char in sorted_char_count:
+        if char[0].isalpha():
+            filtered_chars.append(char)
+    return filtered_chars
+    
+def printable_sorted_char_count(sorted_char_count): 
+    output = ""
+    for char in sorted_char_count:
+        output = output + f"{char[0]}: {char[1]}" + "\n"
+    output = output[:-1]
+    return(output)
 
