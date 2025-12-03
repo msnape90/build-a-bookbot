@@ -1,5 +1,3 @@
-
-
 def get_book_text(path_to_book):
     with open(path_to_book) as f:
         file_contents = f.read()
